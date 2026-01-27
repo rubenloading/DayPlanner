@@ -1,0 +1,15 @@
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.GeneratedMSBuildEditorConfig.editorconfig
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.AssemblyInfoInputs.cache
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.AssemblyInfo.cs
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.csproj.CoreCompileInputs.cache
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.sourcelink.json
+/home/ludwig/csharp-test/DayPlanner/bin/Debug/net8.0/DayPlanner
+/home/ludwig/csharp-test/DayPlanner/bin/Debug/net8.0/DayPlanner.deps.json
+/home/ludwig/csharp-test/DayPlanner/bin/Debug/net8.0/DayPlanner.runtimeconfig.json
+/home/ludwig/csharp-test/DayPlanner/bin/Debug/net8.0/DayPlanner.dll
+/home/ludwig/csharp-test/DayPlanner/bin/Debug/net8.0/DayPlanner.pdb
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.dll
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/refint/DayPlanner.dll
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.pdb
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/DayPlanner.genruntimeconfig.cache
+/home/ludwig/csharp-test/DayPlanner/obj/Debug/net8.0/ref/DayPlanner.dll
