@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks; 
+using System.Globalization; 
+using System.Threading;
 
 namespace DayPlanner
 {
@@ -11,11 +13,13 @@ namespace DayPlanner
     {
         static void Main(string[] args)
         {
+            string Date = DateTime.Now.ToString("dd/MM/yy");
+            Console.WriteLine(Date);
             string filePath = "tasks.txt"; 
             int decision = 0; 
             Console.WriteLine("What do you wanna do ?");
             Console.WriteLine("Press 1 for seeing your tasks for today");
-            Console.WriteLine("Press 2 for adding Tasks for a specific date");
+            Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task Day/Month/Year");
             Console.WriteLine("Press 3 to remove something from the list");
             string input = Console.ReadLine();
             Int32.TryParse(input, out decision); 
@@ -26,13 +30,32 @@ namespace DayPlanner
                 }
                 if (decision == 1)
                 {
-                    if(File.Exists(filePath))
+                   /* if(File.Exists(filePath))
                     {
                     string tasks = File.ReadAllText(filePath);
+                    bool b = tasks.Contains(Date);
+                    if(b)
+                    {
                     Console.WriteLine("Deine Aufgaben: ");
                     Console.WriteLine(tasks);
                     }
-                    else {Console.WriteLine("Keine Aufgaben gefunden");}
+                    }
+                    else {Console.WriteLine("Keine Aufgaben gefunden");}*/
+                    string[] tasks = File.ReadAllLines(filePath);
+                    Console.WriteLine("Deine Aufgaben für heute: ");
+                    bool found = false; 
+                    foreach (string task in tasks)
+                    {
+                        if(task.Contains(Date))
+                        {
+                            Console.WriteLine(task);
+                            found = true; 
+                        }
+                    }
+                    if(!found)
+                    {
+                        Console.WriteLine("Keine Aufgaben für heute :)!");
+                    }
                 }
                 else if (decision == 2)
                 {
