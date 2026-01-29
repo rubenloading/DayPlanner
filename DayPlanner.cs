@@ -19,7 +19,7 @@ namespace DayPlanner
             int decision = 0; 
             Console.WriteLine("What do you wanna do ?");
             Console.WriteLine("Press 1 for seeing your tasks for today");
-            Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task Day/Month/Year");
+            Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task tt.mm.jj");
             Console.WriteLine("Press 3 to remove something from the list");
             string input = Console.ReadLine();
             Int32.TryParse(input, out decision); 
