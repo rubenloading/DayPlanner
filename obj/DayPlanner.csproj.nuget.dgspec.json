@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/ludwig/csharp-test/DayPlanner/DayPlanner.csproj": {}
+    "C:\\Users\\Mr.Geil\\DayPlanner\\DayPlanner\\DayPlanner\\DayPlanner.csproj": {}
   },
   "projects": {
-    "/home/ludwig/csharp-test/DayPlanner/DayPlanner.csproj": {
+    "C:\\Users\\Mr.Geil\\DayPlanner\\DayPlanner\\DayPlanner\\DayPlanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ludwig/csharp-test/DayPlanner/DayPlanner.csproj",
+        "projectUniqueName": "C:\\Users\\Mr.Geil\\DayPlanner\\DayPlanner\\DayPlanner\\DayPlanner.csproj",
         "projectName": "DayPlanner",
-        "projectPath": "/home/ludwig/csharp-test/DayPlanner/DayPlanner.csproj",
-        "packagesPath": "/home/ludwig/.nuget/packages/",
-        "outputPath": "/home/ludwig/csharp-test/DayPlanner/obj/",
+        "projectPath": "C:\\Users\\Mr.Geil\\DayPlanner\\DayPlanner\\DayPlanner\\DayPlanner.csproj",
+        "packagesPath": "C:\\Users\\Mr.Geil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mr.Geil\\DayPlanner\\DayPlanner\\DayPlanner\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/ludwig/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Mr.Geil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,7 +34,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -48,12 +56,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.122/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

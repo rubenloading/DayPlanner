@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic; 
-using System.Linq; 
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.IO;
-using System.Threading.Tasks; 
-using System.Globalization; 
+using System.Threading.Tasks;
+using System.Globalization;
 using System.Threading;
 
 namespace DayPlanner
@@ -13,94 +13,109 @@ namespace DayPlanner
     {
         static void Main(string[] args)
         {
-            string Date = DateTime.Now.ToString("dd/MM/yy");
-            Console.WriteLine(Date);
-            string filePath = "tasks.txt"; 
-            int decision = 0; 
+            
+            string Date = DateTime.Now.ToString("dd.MM.yy");
+            string filePath = "tasks.txt";
+            int decision = 0;
+
             Console.WriteLine("What do you wanna do ?");
             Console.WriteLine("Press 1 for seeing your tasks for today");
             Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task tt.mm.jj");
             Console.WriteLine("Press 3 to remove something from the list");
+
             string input = Console.ReadLine();
-            Int32.TryParse(input, out decision); 
-                Console.WriteLine(decision);
-                if(decision != 1 && decision != 2 && decision != 3)
+            int.TryParse(input, out decision);
+
+            if (decision == 1)
+            {
+                ShowTodaysTasks(filePath, Date);
+            }
+            else if (decision == 2)
+            {
+                AddTask(filePath);
+            }
+            else if (decision == 3)
+            {
+                RemoveTask(filePath);
+            }
+        }
+
+        static void ShowTodaysTasks(string filePath, string todayDate)
+        {
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("Keine Aufgaben gefunden (Datei existiert nicht).");
+                return;
+            }
+
+            string[] tasks = File.ReadAllLines(filePath);
+            bool found = false;
+
+            Console.WriteLine($"Deine Aufgaben für heute ({todayDate}): ");
+
+            foreach (string task in tasks)
+            {
+                if (task.Contains(todayDate))
                 {
-                    Console.WriteLine("Try again");
+                    Console.WriteLine(task);
+                    found = true;
                 }
-                if (decision == 1)
-                {
-                   /* if(File.Exists(filePath))
-                    {
-                    string tasks = File.ReadAllText(filePath);
-                    bool b = tasks.Contains(Date);
-                    if(b)
-                    {
-                    Console.WriteLine("Deine Aufgaben: ");
-                    Console.WriteLine(tasks);
-                    }
-                    }
-                    else {Console.WriteLine("Keine Aufgaben gefunden");}*/
-                    string[] tasks = File.ReadAllLines(filePath);
-                    Console.WriteLine("Deine Aufgaben für heute: ");
-                    bool found = false; 
-                    foreach (string task in tasks)
-                    {
-                        if(task.Contains(Date))
-                        {
-                            Console.WriteLine(task);
-                            found = true; 
-                        }
-                    }
-                    if(!found)
-                    {
-                        Console.WriteLine("Keine Aufgaben für heute :)!");
-                    }
-                }
-                else if (decision == 2)
-                {
-                    Console.WriteLine("Gib die Aufgabe ein: ");
-                    string task = Console.ReadLine();
-                    File.AppendAllText(filePath, task + Environment.NewLine);
-                    Console.WriteLine("Aufgabe gespeichert!");
-                }
-                else if (decision == 3)
-                {
-                    if(File.Exists(filePath))
-                    {
-                        string [] tasks = File.ReadAllLines(filePath);
+            }
 
-                        if (tasks.Length == 0)
-                             {
-                                 Console.WriteLine("Keine Aufgabe zum Löschen!");
-                             }
-                            else
-                            {
-                                Console.WriteLine("Deine Aufgaben: ");
-                                for(int i = 0; i < tasks.Length; i++)
-                                {
-                                    Console.WriteLine($"{i + 1}. {tasks[i]}");
-                                }
+            if (!found)
+            {
+                Console.WriteLine("Keine Aufgaben für heute :)!");
+            }
+        }
 
-                                Console.WriteLine("Welche Aufgabe willst du löschen? Gib die Nummer ein: ");
-                                string input2 = Console.ReadLine();
-                                if (int.TryParse(input2, out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Length)
-                                {
-                                    var taskList = tasks.ToList();
-                                    taskList.RemoveAt(taskNumber -1);
+        public static void AddTask(string filePath)
+        {
+            Console.WriteLine("Gib die Aufgabe ein (Format: Aufgabe tt.mm.jj): ");
+            string task = Console.ReadLine();
 
-                                    File.WriteAllLines(filePath, taskList);
-                                    Console.WriteLine("Aufgabe Geöscht!");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Keine Aufgabe gefunden!");
-                                }
-                            }
-                    }
+            
+            if (!string.IsNullOrWhiteSpace(task))
+            {
+                File.AppendAllText(filePath, task + Environment.NewLine);
+                Console.WriteLine("Aufgabe gespeichert!");
+            }
+        }
 
-                }
+        static void RemoveTask(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("Keine Aufgaben gefunden");
+                return;
+            }
 
+            string[] tasks = File.ReadAllLines(filePath);
+            if (tasks.Length == 0)
+            {
+                Console.WriteLine("Keine Aufgabe zum Entfernen!");
+                return;
+            }
+
+            for (int i = 0; i < tasks.Length; i++)
+            {
+                Console.WriteLine($"{i + 1}: {tasks[i]}");
+            }
+
+            Console.WriteLine("Welche Aufgabe willst du Entfernen ? Gib die Nummer ein: ");
+            string input2 = Console.ReadLine();
+
+            if (int.TryParse(input2, out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Length)
+            {
+                var taskList = tasks.ToList();
+                taskList.RemoveAt(taskNumber - 1);
+
+                File.WriteAllLines(filePath, taskList);
+                Console.WriteLine("Aufgabe Gelöscht!");
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe!");
+            }
         }
     }
 }
