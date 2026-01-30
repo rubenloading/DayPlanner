@@ -13,9 +13,11 @@ namespace DayPlanner
     {
         static void Main(string[] args)
         {
-            
-            string Date = DateTime.Now.ToString("dd.MM.yy");
             string filePath = "tasks.txt";
+            while(true)
+            {
+            string Date = DateTime.Now.ToString("dd.MM.yy");
+            
             int decision = 0;
 
             Console.WriteLine("What do you wanna do ?");
@@ -26,18 +28,27 @@ namespace DayPlanner
             string input = Console.ReadLine();
             int.TryParse(input, out decision);
 
-            if (decision == 1)
+            
+            
+                
+            
+            switch (decision)
             {
-                ShowTodaysTasks(filePath, Date);
+                case 1:
+                    ShowTodaysTasks(filePath, Date);
+                    break; 
+                case 2:
+                    AddTask(filePath);
+                    break;
+                case 3:
+                    RemoveTask(filePath);
+                    break;
+                default:
+                    Console.WriteLine("Bitte 1-3 eingeben!");
+                    break;
             }
-            else if (decision == 2)
-            {
-                AddTask(filePath);
             }
-            else if (decision == 3)
-            {
-                RemoveTask(filePath);
-            }
+            
         }
 
         static void ShowTodaysTasks(string filePath, string todayDate)
