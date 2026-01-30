@@ -14,12 +14,11 @@ namespace DayPlanner
         static void Main(string[] args)
         {
             string filePath = "tasks.txt";
+
             while(true)
             {
-            string Date = DateTime.Now.ToString("dd.MM.yy");
-            
+            string Date = DateTime.Now.ToString("dd.MM.yyyy");
             int decision = 0;
-
             Console.WriteLine("What do you wanna do ?");
             Console.WriteLine("Press 1 for seeing your tasks for today");
             Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task tt.mm.jj");
@@ -28,10 +27,6 @@ namespace DayPlanner
             string input = Console.ReadLine();
             int.TryParse(input, out decision);
 
-            
-            
-                
-            
             switch (decision)
             {
                 case 1:
@@ -83,13 +78,31 @@ namespace DayPlanner
         {
             Console.WriteLine("Gib die Aufgabe ein (Format: Aufgabe tt.mm.jj): ");
             string task = Console.ReadLine();
+            string[] parts = task.Split(',');
+            if(parts.Length != 2)
+            {
+                Console.WriteLine("Wrong format!");
+                return;
+            }
+            string taskText = parts [0].Trim();
+            string dateInput = parts[1].Trim();
+
+            if(!DateTime.TryParseExact(dateInput, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime taskDate))
+                    {
+                    Console.WriteLine("Invalid date format!");
+                    return; 
+                    }
+                    string dateString = taskDate.ToString("dd.MM.yyyy");
+
+                    File.AppendAllText(filePath, $"{taskText},{dateString}{Environment.NewLine}");
+                    Console.WriteLine("Task added!");
 
             
-            if (!string.IsNullOrWhiteSpace(task))
+          /*  if (!string.IsNullOrWhiteSpace(task))
             {
                 File.AppendAllText(filePath, task + Environment.NewLine);
                 Console.WriteLine("Aufgabe gespeichert!");
-            }
+            }*/
         }
 
         static void RemoveTask(string filePath)
