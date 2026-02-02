@@ -18,7 +18,7 @@ namespace DayPlanner
             
             string Date = DateTime.Now.ToString("dd.MM.yyyy");
             int decision = 0;
-            Console.WriteLine("What do you wanna do ?");
+            Console.WriteLine("What do you want to do ?");
             Console.WriteLine("Press 1 for seeing your tasks for today");
             Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task tt.mm.jj");
             Console.WriteLine("Press 3 to remove something from the list");
@@ -38,7 +38,7 @@ namespace DayPlanner
                     RemoveTask(filePath);
                     break;
                 default:
-                    Console.WriteLine("Bitte 1-3 eingeben!");
+                    Console.WriteLine("Please type 1-3");
                     break;
             }
             
@@ -49,14 +49,14 @@ namespace DayPlanner
         {
             if (!File.Exists(filePath))
             {
-                Console.WriteLine("Keine Aufgaben gefunden (Datei existiert nicht).");
+                Console.WriteLine("No task found (File not found)");
                 return;
             }
 
             string[] tasks = File.ReadAllLines(filePath);
             bool found = false;
 
-            Console.WriteLine($"Deine Aufgaben für heute ({todayDate}): ");
+            Console.WriteLine($"Tasks for today ({todayDate}): ");
 
             foreach (string task in tasks)
             {
@@ -69,13 +69,13 @@ namespace DayPlanner
 
             if (!found)
             {
-                Console.WriteLine("Keine Aufgaben für heute :)!");
+                Console.WriteLine("No tasks for today:)!");
             }
         }
 
         public static void AddTask(string filePath)
         {
-            Console.WriteLine("Gib die Aufgabe ein (Format: Aufgabe, tt.mm.jj): ");
+            Console.WriteLine("Type in task (Format: Task, tt.mm.jj): ");
             string task = Console.ReadLine();
             string[] parts = task.Split(',');
             if(parts.Length != 2)
@@ -87,10 +87,10 @@ namespace DayPlanner
             string dateInput = parts[1].Trim();
 
             if(!DateTime.TryParseExact(dateInput, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime taskDate))
-                    {
+            {
                     Console.WriteLine("Invalid date format!");
                     return; 
-                    }
+            }
                     string dateString = taskDate.ToString("dd.MM.yyyy");
 
                     File.AppendAllText(filePath, $"{taskText},{dateString}{Environment.NewLine}");
@@ -108,14 +108,14 @@ namespace DayPlanner
         {
             if (!File.Exists(filePath))
             {
-                Console.WriteLine("Keine Aufgaben gefunden");
+                Console.WriteLine("No tasks found");
                 return;
             }
 
             string[] tasks = File.ReadAllLines(filePath);
             if (tasks.Length == 0)
             {
-                Console.WriteLine("Keine Aufgabe zum Entfernen!");
+                Console.WriteLine("No tasks to remove!");
                 return;
             }
 
@@ -124,7 +124,7 @@ namespace DayPlanner
                 Console.WriteLine($"{i + 1}: {tasks[i]}");
             }
 
-            Console.WriteLine("Welche Aufgabe willst du Entfernen ? Gib die Nummer ein: ");
+            Console.WriteLine("Which task do you want to remove? Please type in the Number:  ");
             string input2 = Console.ReadLine();
 
             if (int.TryParse(input2, out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Length)
@@ -133,11 +133,11 @@ namespace DayPlanner
                 taskList.RemoveAt(taskNumber - 1);
 
                 File.WriteAllLines(filePath, taskList);
-                Console.WriteLine("Aufgabe Gelöscht!");
+                Console.WriteLine("Task removed");
             }
             else
             {
-                Console.WriteLine("Ungültige Eingabe!");
+                Console.WriteLine("No Task found at specific number");
             }
         }
     }
