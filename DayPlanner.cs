@@ -15,8 +15,7 @@ namespace DayPlanner
         {
             string filePath = "tasks.txt";
 
-            while(true)
-            {
+            
             string Date = DateTime.Now.ToString("dd.MM.yyyy");
             int decision = 0;
             Console.WriteLine("What do you wanna do ?");
@@ -42,7 +41,7 @@ namespace DayPlanner
                     Console.WriteLine("Bitte 1-3 eingeben!");
                     break;
             }
-            }
+            
             
         }
 
@@ -76,7 +75,7 @@ namespace DayPlanner
 
         public static void AddTask(string filePath)
         {
-            Console.WriteLine("Gib die Aufgabe ein (Format: Aufgabe tt.mm.jj): ");
+            Console.WriteLine("Gib die Aufgabe ein (Format: Aufgabe, tt.mm.jj): ");
             string task = Console.ReadLine();
             string[] parts = task.Split(',');
             if(parts.Length != 2)

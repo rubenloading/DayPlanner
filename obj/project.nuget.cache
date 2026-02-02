@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eYxUST9QYeUs0DYJICt3xKuc3l79fFB+62cwfoB2FW3fSatu3ojOTURayrxMtf8xpyMy1giyAlkolHxF0ayMBg==",
+  "dgSpecHash": "b06BgnmiBYA=",
   "success": true,
-  "projectFilePath": "/home/ludwig/csharp-test/DayPlanner/DayPlanner.csproj",
+  "projectFilePath": "C:\\Users\\ludwig\\csharp\\DayPlanner\\DayPlanner.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
