@@ -44,7 +44,7 @@ namespace DayPlanner
                         RemoveTask(filePath);
                         break;
                     default:
-                        Console.WriteLine("Please type 1-3");
+                        Console.WriteLine("Bye!");
                         break;
                 }
 
