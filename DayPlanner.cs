@@ -17,31 +17,38 @@ namespace DayPlanner
 
             
             string Date = DateTime.Now.ToString("dd.MM.yyyy");
-            int decision = 0;
-            Console.WriteLine("What do you want to do ?");
-            Console.WriteLine("Press 1 for seeing your tasks for today");
-            Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task tt.mm.jj");
-            Console.WriteLine("Press 3 to remove something from the list");
-
-            string input = Console.ReadLine();
-            int.TryParse(input, out decision);
-
-            switch (decision)
+            int decision = -1;
+            while (decision != 0)
             {
-                case 1:
-                    ShowTodaysTasks(filePath, Date);
-                    break; 
-                case 2:
-                    AddTask(filePath);
-                    break;
-                case 3:
-                    RemoveTask(filePath);
-                    break;
-                default:
-                    Console.WriteLine("Please type 1-3");
-                    break;
+                Console.WriteLine("What do you want to do ?");
+                Console.WriteLine("Press 1 for seeing your tasks for today");
+                Console.WriteLine("Press 2 for adding Tasks for a specific date, Format: Task tt.mm.jj");
+                Console.WriteLine("Press 3 to remove something from the list");
+                Console.WriteLine("Press 0 to exit");
+
+                string input = Console.ReadLine();
+                int.TryParse(input, out decision);
+
+
+
+
+                switch (decision)
+                {
+                    case 1:
+                        ShowTodaysTasks(filePath, Date);
+                        break;
+                    case 2:
+                        AddTask(filePath);
+                        break;
+                    case 3:
+                        RemoveTask(filePath);
+                        break;
+                    default:
+                        Console.WriteLine("Please type 1-3");
+                        break;
+                }
+
             }
-            
             
         }
 
@@ -97,11 +104,7 @@ namespace DayPlanner
                     Console.WriteLine("Task added!");
 
             
-          /*  if (!string.IsNullOrWhiteSpace(task))
-            {
-                File.AppendAllText(filePath, task + Environment.NewLine);
-                Console.WriteLine("Aufgabe gespeichert!");
-            }*/
+         
         }
 
         static void RemoveTask(string filePath)
