@@ -82,7 +82,7 @@ namespace DayPlanner
 
         public static void AddTask(string filePath)
         {
-            Console.WriteLine("Type in task (Format: Task, tt.mm.jj): ");
+            Console.WriteLine("Type in task (Format: Task, dd.mm.yyyy): ");
             string task = Console.ReadLine();
             string[] parts = task.Split(',');
             if(parts.Length != 2)
