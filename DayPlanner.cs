@@ -36,6 +36,8 @@ namespace DayPlanner
                 {
                     case 1:
                         ShowTodaysTasks(filePath, Date);
+                        Console.WriteLine("\n Press any key to continue...");
+                        Console.ReadKey();
                         break;
                     case 2:
                         AddTask(filePath);
