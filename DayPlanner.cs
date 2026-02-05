@@ -78,12 +78,21 @@ namespace DayPlanner
                     Console.WriteLine(task);
                     found = true;
                 }
+                if (!found)
+                {
+                    Console.WriteLine("No tasks for today:)!");
+                    Console.WriteLine("Do you wanna see the full list of tasks? (y/n)");
+                    string response = Console.ReadLine();
+                    if (response.ToLower() == "y")
+                    {
+                        Console.WriteLine(task);
+
+                    }
+
+                }
             }
 
-            if (!found)
-            {
-                Console.WriteLine("No tasks for today:)!");
-            }
+            
         }
 
         public static void AddTask(string filePath)
