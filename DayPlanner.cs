@@ -41,9 +41,13 @@ namespace DayPlanner
                         break;
                     case 2:
                         AddTask(filePath);
+                        Console.WriteLine("\n Press any key to continue...");
+                        Console.ReadKey();
                         break;
                     case 3:
                         RemoveTask(filePath);
+                        Console.WriteLine("\n Press any key to continue...");
+                        Console.ReadKey();
                         break;
                     default:
                         Console.WriteLine("Bye!");
