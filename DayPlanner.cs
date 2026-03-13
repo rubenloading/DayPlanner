@@ -9,6 +9,7 @@ using System.Threading;
 
 namespace DayPlanner
 {
+    
     class Program
     {
         static void Main(string[] args)
@@ -35,6 +36,7 @@ namespace DayPlanner
                 switch (decision)
                 {
                     case 1:
+                    
                         ShowTodaysTasks(filePath, Date);
                         Console.WriteLine("\n Press any key to continue...");
                         Console.ReadKey();
@@ -68,12 +70,13 @@ namespace DayPlanner
 
             string[] tasks = File.ReadAllLines(filePath);
             bool found = false;
-
+            //noch b ++ aber wooooooo
             Console.WriteLine($"Tasks for today ({todayDate}): ");
-
-            foreach (string task in tasks)
+            foreach(string task in tasks)
             {
-                if (task.Contains(todayDate))
+                int b = 0; 
+
+                if(tasks[b].Contains(todayDate))
                 {
                     Console.WriteLine(task);
                     found = true;
@@ -91,6 +94,8 @@ namespace DayPlanner
 
                 }
             }
+
+            
 
             
         }
@@ -127,6 +132,7 @@ namespace DayPlanner
             if (!File.Exists(filePath))
             {
                 Console.WriteLine("No tasks found");
+             
                 return;
             }
 
