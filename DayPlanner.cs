@@ -70,31 +70,36 @@ namespace DayPlanner
 
             string[] tasks = File.ReadAllLines(filePath);
             bool found = false;
-            //noch b ++ aber wooooooo
+            
             Console.WriteLine($"Tasks for today ({todayDate}): ");
             foreach(string task in tasks)
             {
-                int b = 0; 
-
-                if(tasks[b].Contains(todayDate))
+                if(task.Contains(todayDate))
                 {
                     Console.WriteLine(task);
                     found = true;
                 }
-                if (!found)
+            }
+             if (!found)
                 {
                     Console.WriteLine("No tasks for today:)!");
                     Console.WriteLine("Do you wanna see the full list of tasks? (y/n)");
+
                     string response = Console.ReadLine();
-                    if (response.ToLower() == "y")
+                    if (response.Equals("y", StringComparison.OrdinalIgnoreCase))
                     {
-                        Console.WriteLine(task);
+                        foreach(string task in tasks)
+                        {
+                            Console.WriteLine(task);
+                        }
 
                     }
+                
 
+          
                 }
-            }
-
+                
+                
             
 
             
