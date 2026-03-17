@@ -153,7 +153,24 @@ namespace DayPlanner
                 Console.WriteLine($"{i + 1}: {tasks[i]}");
             }
 
-            Console.WriteLine("Which task do you want to remove? Please type in the Number:  ");
+            Console.WriteLine("Do you want to remove all tasks? (y/n)");
+            string response = Console.ReadLine() ?? string.Empty; 
+
+            if(response.Equals("y", StringComparison.OrdinalIgnoreCase))
+            {
+                File.WriteAllText(filePath, string.Empty);
+                Console.WriteLine("All tasks removed!");
+                return;
+            }
+            if (!response.Equals("n", StringComparison.OrdinalIgnoreCase) && !response.Equals("y", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Invalid input! Please enter y or n.");
+                return;
+            }
+
+            if(response.Equals("n", StringComparison.OrdinalIgnoreCase))
+            {
+                 Console.WriteLine("Which task do you want to remove? Please type in the Number:  ");
             string input2 = Console.ReadLine() ?? string.Empty;
 
             if (int.TryParse(input2, out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Length)
@@ -168,6 +185,11 @@ namespace DayPlanner
             {
                 Console.WriteLine("No Task found at specific number");
             }
+            }
+
+
+
+           
         }
         //next: 
         //adding details to tasks/switching dates 
