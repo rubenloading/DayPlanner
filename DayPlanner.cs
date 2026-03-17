@@ -27,7 +27,7 @@ namespace DayPlanner
                 Console.WriteLine("Press 3 to remove something from the list");
                 Console.WriteLine("Press 0 to exit");
 
-                string input = Console.ReadLine();
+                string input = Console.ReadLine() ?? string.Empty;
                 int.TryParse(input, out decision);
 
 
@@ -85,7 +85,7 @@ namespace DayPlanner
                     Console.WriteLine("No tasks for today:)!");
                     Console.WriteLine("Do you wanna see the full list of tasks? (y/n)");
 
-                    string response = Console.ReadLine();
+                    string response = Console.ReadLine() ?? string.Empty;
                     if (response.Equals("y", StringComparison.OrdinalIgnoreCase))
                     {
                         foreach(string task in tasks)
@@ -108,7 +108,7 @@ namespace DayPlanner
         public static void AddTask(string filePath)
         {
             Console.WriteLine("Type in task (Format: Task, dd.mm.yyyy): ");
-            string task = Console.ReadLine();
+            string task = Console.ReadLine() ?? string.Empty;
             string[] parts = task.Split(',');
             if(parts.Length != 2)
             {
@@ -154,7 +154,7 @@ namespace DayPlanner
             }
 
             Console.WriteLine("Which task do you want to remove? Please type in the Number:  ");
-            string input2 = Console.ReadLine();
+            string input2 = Console.ReadLine() ?? string.Empty;
 
             if (int.TryParse(input2, out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Length)
             {
@@ -169,5 +169,18 @@ namespace DayPlanner
                 Console.WriteLine("No Task found at specific number");
             }
         }
+        //next: 
+        //adding details to tasks/switching dates 
+        //search ? 
+        // task erledigen statt löschen 
+        //prioritäten ? 
+        //sortieren nach Datum ?
+        //export ? 
+        //undo redo
+        //multi user 
+        //GUI 
+        //bestätigung vor löschen 
+        
+
     }
 }
