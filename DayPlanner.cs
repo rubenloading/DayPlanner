@@ -80,32 +80,37 @@ namespace DayPlanner
                     found = true;
                 }
             }
-             if (!found)
+            if(found)
+            {
+                Console.WriteLine("Do you wanna see the full list of tasks? (y/n)");
+
+                string response = Console.ReadLine() ?? string.Empty;
+                if (response.Equals("y", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("No tasks for today:)!");
-                    Console.WriteLine("Do you wanna see the full list of tasks? (y/n)");
-
-                    string response = Console.ReadLine() ?? string.Empty;
-                    if (response.Equals("y", StringComparison.OrdinalIgnoreCase))
+                    foreach(string task in tasks)
                     {
-                        foreach(string task in tasks)
-                        {
-                            Console.WriteLine(task);
-                        }
-
+                        Console.WriteLine(task);
                     }
-                
 
-          
                 }
-                
-                
-            
+            }
+            if (!found)
+            {
+                Console.WriteLine("No tasks for today:)!");
+                Console.WriteLine("Do you wanna see the full list of tasks? (y/n)");
 
-            
+                string response1 = Console.ReadLine() ?? string.Empty;
+                if (response1.Equals("y", StringComparison.OrdinalIgnoreCase))
+                {
+                    foreach(string task in tasks)
+                    {
+                        Console.WriteLine(task);
+                    }
+
+                }
+            }
         }
-
-        public static void AddTask(string filePath)
+        private static void AddTask(string filePath)
         {
             Console.WriteLine("Type in task (Format: Task, dd.mm.yyyy): ");
             string task = Console.ReadLine() ?? string.Empty;
@@ -168,11 +173,12 @@ namespace DayPlanner
                 return;
             }
 
+            string input2 = "";
             if(response.Equals("n", StringComparison.OrdinalIgnoreCase))
             {
                  Console.WriteLine("Which task do you want to remove? Please type in the Number:  ");
-            string input2 = Console.ReadLine() ?? string.Empty;
-
+                 input2 = Console.ReadLine() ?? string.Empty;
+            }
             if (int.TryParse(input2, out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Length)
             {
                 var taskList = tasks.ToList();
@@ -184,14 +190,13 @@ namespace DayPlanner
             else
             {
                 Console.WriteLine("No Task found at specific number");
-            }
-            }
-
+            } 
+        }
 
 
            
-        }
         //next: 
+        //tasks zuerst für heute anzeigen bei ganzer liste
         //adding details to tasks/switching dates 
         //search ? 
         // task erledigen statt löschen 
