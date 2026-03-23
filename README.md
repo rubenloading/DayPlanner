@@ -1,3 +1,3 @@
 # DayPlanner
-Simple Dayplanner in cs 
+Simple Dayplanner in cs. 
 Right now its just a console application, GUI ist coming soon...
